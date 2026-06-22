@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Acesso da Plataforma Ana Brez: modulo liberado por aula -->
+<script>(function(){try{var u=JSON.parse(localStorage.getItem('brez_unlocked')||'[]');if(!Array.isArray(u)||u.indexOf('carteira')<0){(window.top||window).location.replace('./');}}catch(e){(window.top||window).location.replace('./');}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gerenciador de Ativos — Ana Brez</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 :root{
@@ -197,6 +199,84 @@ footer a{color:var(--gold-dark);text-decoration:none}
 .text-small{font-size:12px}
 .text-muted{color:var(--text-muted)}
 .text-right{text-align:right}
+
+/* ============================================================
+   REFINAMENTO VISUAL — Plataforma Ana Brez (camada aditiva)
+   Apenas estilo: nao altera dados, textos, IDs nem logica.
+   ============================================================ */
+:root{
+  --shadow:0 1px 2px rgba(13,27,42,0.04),0 6px 20px rgba(13,27,42,0.06);
+  --shadow-lg:0 14px 44px rgba(13,27,42,0.16);
+  --ring:0 0 0 3px var(--gold-bg);
+}
+body{line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+/* Tipografia: Playfair nos titulos, Open Sans no corpo e numeros */
+.logo{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:22px}
+.card-title{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin-bottom:16px}
+.welcome h2,.empty h3,.modal-head h3,.modal h3,.modal h4,.disclaimer-modal h3,.disclaimer-footer h4{font-family:'Playfair Display',Georgia,serif;letter-spacing:-0.01em}
+.welcome h2{font-size:24px;font-weight:800}
+.empty h3{font-size:18px}
+.kpi-value{font-weight:800;font-size:28px;letter-spacing:-0.02em}
+.bloco-pct{font-weight:800;letter-spacing:-0.01em}
+
+/* Header com fio dourado (consistencia com a plataforma) */
+header{border-bottom:2px solid var(--gold)}
+
+/* Cards com borda sutil + elevacao refinada */
+.container{padding:24px}
+.card{border:1px solid var(--gray-light);padding:24px}
+.kpi{border:1px solid var(--gray-light);transition:transform .18s,box-shadow .18s}
+.kpi:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.bloco-card{border:1px solid var(--gray-light);transition:transform .18s,box-shadow .18s}
+.bloco-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+
+/* Tabs */
+.tabs{gap:4px}
+.tab{transition:all .18s}
+.tab.active{box-shadow:0 2px 8px rgba(13,27,42,0.18)}
+
+/* Tabela: zebra discreta + leitura confortavel */
+th{padding:12px 14px}
+td{padding:12px 14px}
+tbody tr:nth-child(even) td{background:rgba(240,239,233,0.45)}
+tr:hover td{background:var(--gold-bg)!important}
+.table-wrap{border-color:var(--gray)}
+
+/* Botoes: estados completos */
+.btn{transition:transform .12s,background .15s,box-shadow .15s}
+.btn:hover{box-shadow:0 2px 8px rgba(13,27,42,0.12)}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.5;cursor:not-allowed;box-shadow:none;transform:none}
+
+/* Inputs: anel de foco suave e padronizado */
+input,select,textarea{padding:10px 12px;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:var(--ring)}
+
+/* Badges com leve contorno */
+.badge{border:1px solid rgba(13,27,42,0.06)}
+
+/* Empty state mais respirado */
+.empty{padding:48px 24px}
+
+/* Foco visivel geral (acessibilidade) */
+a:focus-visible,button:focus-visible,.tab:focus-visible,.btn:focus-visible,.modal-close:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* Disclaimers unificados e mais calmos */
+.disclaimer-bar,.disclaimer-footer{background:var(--gold-bg);border-color:rgba(201,168,76,0.4)}
+
+/* Responsivo (mobile) */
+@media (max-width:640px){
+  .container{padding:14px}
+  header{padding:14px 16px;flex-wrap:wrap;gap:10px}
+  .kpi-value{font-size:24px}
+  .welcome h2{font-size:20px}
+  .card{padding:18px}
+  .tab{padding:10px 14px}
+  .btn.xs{padding:7px 12px;font-size:12px}
+  th,td{padding:11px 12px}
+  .modal-head,.modal-body{padding:18px}
+}
 </style>
 </head>
 <body>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Acesso da Plataforma Ana Brez: modulo liberado por aula -->
+<script>(function(){try{var u=JSON.parse(localStorage.getItem('brez_unlocked')||'[]');if(!Array.isArray(u)||u.indexOf('mapa')<0){(window.top||window).location.replace('./');}}catch(e){(window.top||window).location.replace('./');}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#0F2137">
@@ -719,6 +721,29 @@ body::after{
   .triangle-vertex-label{font-size:0.68rem;}
   .anchor-quote{padding:24px 20px;}
   .profile-actions button{min-width:100%;}
+}
+<style>
+/* ============================================================
+   REFINAMENTO VISUAL — Plataforma Ana Brez (camada aditiva)
+   Apenas estilo: nao altera dados, textos, IDs nem logica.
+   ============================================================ */
+
+/* Fio dourado mais presente no topo (consistencia da plataforma) */
+.header{border-bottom:2px solid var(--gold);}
+
+/* Passos bloqueados: cadeado visivel + contraste melhor */
+.nav-btn.locked{opacity:0.6;}
+.nav-btn.locked::after{content:"🔒";font-size:0.68rem;opacity:0.85;margin-left:1px;}
+
+/* Foco visivel para teclado (acessibilidade — antes inexistente) */
+a:focus-visible,button:focus-visible,.nav-btn:focus-visible,.quiz-btn:focus-visible,.quiz-opt:focus-visible,.example-card:focus-visible,.btn-share:focus-visible{
+  outline:2px solid var(--gold);outline-offset:2px;
+}
+
+/* Alvos de toque maiores no mobile */
+@media (max-width:640px){
+  .nav-btn{padding:10px 13px;}
+  .quiz-btn{padding:13px 20px;}
 }
 </style>
 </head>
